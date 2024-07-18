@@ -31,8 +31,36 @@
 
                     <div
                         :class="{'hidden': !open}"
+
                     
                     >
+
+                    <!-- TOGGLE BAR -->
+
+                    <button x-on:click="open = !open" class="toggleBar">Menu</button>
+
+                    <div x-show="open">
+                        <ul>
+                            <li>Wishlist</li>
+
+                            <li>
+                                <p>2</p>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    Cart
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="login">
+                                    Login
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
 
                         
 
