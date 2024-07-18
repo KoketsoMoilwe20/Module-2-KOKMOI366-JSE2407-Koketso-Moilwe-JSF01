@@ -22,7 +22,7 @@
                 <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4" x-data="{open: false}">
 
                     <a href="/">
-                        <button>
+                        <button class="flex items-center space-x-3 rtl:space-x-reverse">
                             <img src="/Images/online-shop.png" alt="SwiftCart Logo"
                             class="h-8"
                             >
@@ -33,6 +33,7 @@
                     <button 
                     @click="open = !open"
                     type="button"
+                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-ScandinavianClovers focus:outline-none focus:ring-2 focus:ring-gray-200"
                     >
                         <span>Open main menu</span>
                     </button>
