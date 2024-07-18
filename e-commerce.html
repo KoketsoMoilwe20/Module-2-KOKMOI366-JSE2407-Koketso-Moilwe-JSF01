@@ -23,7 +23,7 @@
                     </a>
                   
                     <button 
-                    x-on="open = !open"
+                    @click="open = !open"
                     type="button"
                     >
                         <span>Open main menu</span>
@@ -37,9 +37,9 @@
 
                     <!-- TOGGLE BAR -->
 
-                    <button x-on:click="open = !open" class="toggleBar">Menu</button>
+                    <button @click="open = !open" class="toggleBar">Menu</button>
 
-                    <div x-show="open">
+                    <div x-show="open" >
                         <ul>
                             <li>Wishlist</li>
 
