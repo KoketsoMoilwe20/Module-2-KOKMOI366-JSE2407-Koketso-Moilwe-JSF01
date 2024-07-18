@@ -7,7 +7,40 @@
 
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     </head>
+
     <body>
-        >
+       
+        <!-- HEADER -->
+
+        <header>
+            <nav>
+                <div x-data="{open: false}">
+
+                    <a href="/">
+                        <button>
+                            <span>SwiftCart</span>
+                        </button>
+                    </a>
+                  
+                    <button 
+                    x-on="open = !open"
+                    type="button"
+                    >
+                        <span>Open main menu</span>
+                    </button>
+
+                    <div
+                        :class="{'hidden': !open}"
+                    
+                    >
+
+                        
+
+                    </div>
+                </div>
+            </nav>
+        </header>
+
     </body>
+
 </html>
