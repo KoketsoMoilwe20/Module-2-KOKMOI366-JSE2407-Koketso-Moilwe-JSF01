@@ -60,11 +60,8 @@
                     </button>
 
 
-                    <!-- TOGGLE BAR -->
-
                     <div
                         :class="{'hidden': !open}"
-                        
                     
                     >
 
@@ -72,7 +69,7 @@
                     <button @click="open = !open" class="toggleBar">Menu</button>
 
                     <div x-show="open" >
-                        <ul>
+                        <ul class="flex flex-col top-10 font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-ScandinavianClovers md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
                             <li>Wishlist</li>
 
                             <li>
