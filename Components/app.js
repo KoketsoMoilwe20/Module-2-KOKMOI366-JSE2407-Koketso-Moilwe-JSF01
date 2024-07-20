@@ -64,3 +64,4 @@ document.addEventListener('alpine:init', () => {
         }
     }));
 });
+
