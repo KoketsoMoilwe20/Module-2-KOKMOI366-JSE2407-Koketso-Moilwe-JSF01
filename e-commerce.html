@@ -1,168 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="app.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SwiftCart</title>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.3/dist/cdn.min.js" defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-
-    <header class="sticky z-50 top-0 bg-gray-500 border-gray-200">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4" x-data="{ open: false }">
-            <a href="index.html">
+  <header class="sticky z-50 top-0">
+    <nav class="bg-gray-500 border-gray-200">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="/">
                 <button class="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img src="Images/online-shop.png" class="h-8" alt="Flowbite Logo">
+                    <img src="logo.png" alt="SwiftCart Logo" class="h-8">
                     <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">SwiftCart</span>
                 </button>
             </a>
-            <button
-                @click="open = !open"
-                type="button"
-                class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
-                aria-controls="navbar-dropdown"
-                aria-expanded="false"
+            <button class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200">
+                <span className="sr-only">Open main menu</span>
+            <svg
+              className="w-5 h-5"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 17 14"
             >
-                <span class="sr-only">Open main menu</span>
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"></path>
-                </svg>
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M1 1h15M1 7h15M1 13h15"
+              />
+            </svg>
             </button>
-            <div x-show="open" class="w-full md:block md:w-auto" id="navbar-dropdown">
-                <ul class="flex flex-col top-10 font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-500 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
-                    <li>
-                        <a href="#" class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Wishlist</a>
-                    </li>
-                    <li class="hidden lg:block md:block relative">
-                        <div class="t-0 absolute left-3 -top-4">
-                            <p class="flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-3 text-xs text-white">2</p>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" class="file: h-6 w-6 stroke-white cursor-pointer">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"></path>
-                        </svg>
-                    </li>
-                    <li>
-                        <a href="login.html" class="lg:hidden md:hidden py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Cart</a>
-                    </li>
-                    <li>
-                        <a href="login.html" class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Login</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </header>
-
-    <!-- HomeContent -->
-    <main>
-        <div class="grid lg:flex gap-y-4 gap-x-48 lg:items-start mt-3 mx-auto justify-center">
-            <!-- Filter -->
-            <div x-data="filter">
-                <form>
-
-                    <div class="flex lg:w-[31.25rem] sm:w-[95%] md:w-full relative">
-                        <button
-                            @click="toggleDropdown"
-                            id="dropdown-button"
-                            class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200"
-                            type="button"
-                        >
-                            <span x-text="filterItem"></span>
-                            <svg
-                                class="w-2.5 h-2.5 ms-2.5"
-                                aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 10 6"
-                            >
-                                <path
-                                    stroke="currentColor"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="m1 1 4 4 4-4"
-                                />
-                            </svg>
-                        </button>
-
-                        <div
-                            x-show="isOpen"
-                            @click.away="isOpen = false"
-                            id="dropdown"
-                            class="z-10 absolute top-[100%] bg-white divide-y divide-gray-100 rounded-lg shadow w-44"
-                        >
-                            <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdown-button">
-                                <li
-                                    @click="handleFilter('All categories')"
-                                    class="inline-flex w-full px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                                >
-                                    All categories
-                                </li>
-                                <template x-for="name in categories" :key="name">
-                                    <li>
-                                        <button
-                                            @click="handleFilter(name)"
-                                            type="button"
-                                            class="inline-flex w-full px-4 py-2 hover:bg-gray-100"
-                                        >
-                                            <span x-text="name"></span>
-                                        </button>
-                                    </li>
-                                </template>
-                            </ul>
-                        </div>
-
-                        <div class="relative w-full">
-                            <input
-                                type="search"
-                                id="search-dropdown"
-                                name="searchInput"
-                                class="p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                                placeholder="Search products..."
-                                x-model="searchTerm"
-                                @input="handleSearch"
-                            />
-                            <button
-                                type="submit"
-                                class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
-                            >
-                                <svg
-                                    class="w-4 h-4"
-                                    aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 20 20"
-                                >
-                                    <path
-                                        stroke="currentColor"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-                                    />
-                                </svg>
-                                <span class="sr-only">Search</span>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-                <template x-if="error">
-                    <div class="text-red-500">
-                        <p x-text="error"></p>
-                    </div>
-                </template>
-            </div>
-
-            <!-- Sort -->
-             <div></div>
-        </div>
-
-        <!-- Products -->
-
-
-        </div>
             
-    </main>
+          </div>
+          <div class="flex items-center space-x-4">
+            <a href="/wishlist" class="hover:underline">Wishlist</a>
+            <a href="/cart" class="relative">
+              <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                <path d="M10 20a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm10 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM5.4 4l1.35 7H17l1.1-5H7.38l-.88-2H3v2h2.4z"/>
+              </svg>
+              <span class="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-1">2</span>
+            </a>
+            <a href="/login" class="hover:underline">Login</a>
+          </div>
+    </nav>
+   
+  </header>
+
+  <div x-data="productList" x-init="fetchProducts" class="container mx-auto p-4">
+    <!-- Product List -->
+    <template x-if="view === 'list'">
+      <div>
+        <template x-if="loading">
+          <div class="grid justify-center">
+            <div class="text-center text-gray-500">Loading...</div>
+          </div>
+        </template>
+
+        <template x-if="error">
+          <div class="grid justify-center">
+            <div class="text-center text-red-500" x-text="error"></div>
+          </div>
+        </template>
+
+        <template x-if="!loading && !error">
+          <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            <template x-for="product in products" :key="product.id">
+              <div @click="viewProduct(product.id)" class="p-4 border rounded shadow cursor-pointer">
+                <img :src="product.image" alt="" class="h-48 w-full object-cover mb-4">
+                <h2 class="text-lg font-bold" x-text="product.title"></h2>
+                <div class="flex items-center">
+                  <svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927C9.217 2.629 9.568 2.5 9.877 2.668L12 3.878l2.123-1.21c.31-.168.66-.039.829.26l1.337 2.506a.75.75 0 0 1-.05.803l-1.625 2.211L15.95 11.8a.75.75 0 0 1-.145.824l-2.454 2.385 1.343 3.748a.75.75 0 0 1-1.12.884l-3.156-1.745-3.156 1.745a.75.75 0 0 1-1.12-.884l1.343-3.748-2.454-2.385a.75.75 0 0 1-.145-.824l.876-3.526-1.625-2.211a.75.75 0 0 1-.05-.803L6.05 4.193zM9 6.382l-1.35 2.25a.75.75 0 0 1-.572.329h-2.15l1.962 1.68a.75.75 0 0 1 .193.735l-.579 2.328L9 11.086a.75.75 0 0 1 .59 0l2.296 1.288-.58-2.328a.75.75 0 0 1 .193-.735l1.962-1.68h-2.15a.75.75 0 0 1-.572-.329L11 6.382z"/>
+                  </svg>
+                  <span class="ml-2 text-yellow-500" x-text="product.rating.rate"></span>
+                  <span class="ml-2 text-gray-500">Reviews: <span x-text="product.rating.count"></span></span>
+                </div>
+                <span class="block mt-2 text-green-500 font-bold" x-text="`$${product.price}`"></span>
+                <span class="inline-block bg-gray-200 text-gray-800 text-xs px-2 py-1 rounded mt-2" x-text="product.category"></span>
+                <div class="mt-4 flex justify-between items-center">
+                  <button class="px-4 py-2 bg-blue-500 text-white rounded">Add To Cart</button>
+                  <svg class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                  </svg>
+                </div>
+              </div>
+            </template>
+          </div>
+        </template>
+      </div>
+    </template>
+
+    <!-- Product Detail -->
+    <template x-if="view === 'detail'">
+      <div class="p-4 border rounded shadow">
+        <button @click="view = 'list'" class="mb-4 text-blue-500">Back to Products</button>
+        <img :src="selectedProduct.image" alt="" class="h-48 w-full object-cover mb-4">
+        <h2 class="text-lg font-bold" x-text="selectedProduct.title"></h2>
+        <div class="flex items-center">
+          <svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927C9.217 2.629 9.568 2.5 9.877 2.668L12 3.878l2.123-1.21c.31-.168.66-.039.829.26l1.337 2.506a.75.75 0 0 1-.05.803l-1.625 2.211L15.95 11.8a.75.75 0 0 1-.145.824l-2.454 2.385 1.343 3.748a.75.75 0 0 1-1.12.884l-3.156-1.745-3.156 1.745a.75.75 0 0 1-1.12-.884l1.343-3.748-2.454-2.385a.75.75 0 0 1-.145-.824l.876-3.526-1.625-2.211a.75.75 0 0 1-.05-.803L6.05 4.193zM9 6.382l-1.35 2.25a.75.75 0 0 1-.572.329h-2.15l1.962 1.68a.75.75 0 0 1 .193.735l-.579 2.328L9 11.086a.75.75 0 0 1 .59 0l2.296 1.288-.58-2.328a.75.75 0 0 1 .193-.735l1.962-1.68h-2.15a.75.75 0 0 1-.572-.329L11 6.382z"/>
+          </svg>
+          <span class="ml-2 text-yellow-500" x-text="selectedProduct.rating.rate"></span>
+          <span class="ml-2 text-gray-500">Reviews: <span x-text="selectedProduct.rating.count"></span></span>
+        </div>
+        <span class="block mt-2 text-green-500 font-bold" x-text="`$${selectedProduct.price}`"></span>
+        <span class="inline-block bg-gray-200 text-gray-800 text-xs px-2 py-1 rounded mt-2" x-text="selectedProduct.category"></span>
+        <p class="mt-4" x-text="selectedProduct.description"></p>
+        <button class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">Add To Cart</button>
+      </div>
+    </template>
+  </div>
+
+  <script>
+    function productList() {
+      return {
+        products: [],
+        loading: true,
+        error: null,
+        view: 'list',
+        selectedProduct: null,
+        fetchProducts() {
+          fetch('https://fakestoreapi.com/products')
+            .then(response => response.json())
+            .then(data => {
+              this.products = data;
+              this.loading = false;
+            })
+            .catch(error => {
+              this.error = 'Failed to fetch products';
+              this.loading = false;
+            });
+        },
+        viewProduct(productId) {
+          this.selectedProduct = this.products.find(product => product.id === productId);
+          this.view = 'detail';
+        }
+      }
+    }
+  </script>
 </body>
 </html>
+
+
+  
